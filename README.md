@@ -36,11 +36,19 @@ March 2026
 ## Development Progress
 
 ### Packet Capture
-- **Status:** In Progress
-- **Tools:** Scapy (Python library)
+- **Status:** ✅ Complete
+- **Tools:** Scapy (Python library), Npcap (Windows driver)
 - **Goal:** Capture network traffic from VMnet1 for ML training
+- **Configuration Details:**
+  - **Interface:** `\Device\NPF_{705FE8B9-29C8-43E9-8E13-13A8970A594F}` (VMnet1 Host-Only)
+  - **Subnet:** 192.168.127.0/24 (VMware Host-Only network)
+  - **Verification:** Successfully captured 100 packets containing only VM traffic (Kali ↔ Metasploitable)
 - **Notes:** 
-  - Running capture script from host PC for file management convenience
-  - VMnet1 interface identified as [fill in after testing]
-  - Test capture successful with ping traffic
-- **Files Added:** `capture_traffic.py` (initial packet capture implementation)
+  - Initial capture ran on physical network interface (incorrect)
+  - Fixed by identifying correct Npcap GUID from `get_if_list()` output
+  - Traffic isolation confirmed: No home network traffic leaked into captures
+- **Files Added:** 
+  - `capture_traffic.py` (packet capture implementation)
+  - `find_interface.py` (interface discovery utility)
+  - `vm_traffic.pcap` (sample captured traffic)
+- **Test Results:** Verified VM traffic capture on correct interface; 100 packets captured during ping test
