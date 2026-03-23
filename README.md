@@ -32,3 +32,15 @@ March 2026
 - **IP Scheme:** 
   - Subnet: 192.168.x.0/24 (Dynamic assignment via VMware DHCP)
   - Gateway: None (No internet access required for this phase)
+
+## Development Progress
+
+### Packet Capture
+- **Status:** In Progress
+- **Tools:** Scapy (Python library)
+- **Goal:** Capture network traffic from VMnet1 for ML training
+- **Notes:** 
+  - Running capture script from host PC for file management convenience
+  - VMnet1 interface identified as [fill in after testing]
+  - Test capture successful with ping traffic
+- **Files Added:** `capture_traffic.py` (initial packet capture implementation)
