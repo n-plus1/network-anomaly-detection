@@ -25,5 +25,10 @@ March 2026
 
 ### Network Configuration
 - **Mode:** Host-Only (VMnet1)
-- **Reasoning:** Complete isolation from physical network to prevent attack traffic from escaping the lab environment. Follows defense-in-depth principles.
-- **IP Scheme:** [Will be filled after configuration]
+- **Reasoning:** 
+  - **Isolation:** Ensures complete containment of attack traffic. Even if a VM is fully compromised, the attacker cannot reach the physical network, router, or other devices.
+  - **Safety:** Follows the principle of defense-in-depth by creating a logical air gap between the lab and the production/home network.
+  - **Control:** Allows direct communication between VMs for testing while blocking external egress/ingress.
+- **IP Scheme:** 
+  - Subnet: 192.168.x.0/24 (Dynamic assignment via VMware DHCP)
+  - Gateway: None (No internet access required for this phase)
